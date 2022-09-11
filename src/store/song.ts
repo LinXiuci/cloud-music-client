@@ -3,45 +3,45 @@ import { Icon } from '@/enums'
 export default {
   state: {
     /** 音乐信息 */
-    songId: '',     // 音乐 ID
-    songTitle: '',  // 歌名
-    songUrl: '',    // 音乐 URL
-    songPic: `/img/songPic/tubiao.jpg`, // 歌曲图片
-    singerName: '', //  歌手名
-    lyric: [],      // 处理后的歌词数据
+    songId    : '',                          // 音乐 ID
+    songTitle : '',                          // 歌名
+    songUrl   : '',                          // 音乐 URL
+    songPic   : `/img/songPic/tubiao.jpg`,   // 歌曲图片
+    singerName: '',                          // 歌手名
+    lyric     : [],                          // 处理后的歌词数据
 
     /** 音乐播放信息 */
-    isPlay: false,            // 播放状态
-    playBtnIcon: Icon.BOFANG, // 播放状态的图标
-    volume: 0,      // 音量
-    duration: 0,    // 音乐时长
-    curTime: 0,     // 当前音乐的播放位置
-    changeTime: 0,  // 指定播放时刻歌单
-    autoNext: true, // 用于触发自动播放下一首
+    isPlay     : false,         // 播放状态
+    playBtnIcon: Icon.BOFANG,   // 播放状态的图标
+    volume     : 0,             // 音量
+    duration   : 0,             // 音乐时长
+    curTime    : 0,             // 当前音乐的播放位置
+    changeTime : 0,             // 指定播放时刻歌单
+    autoNext   : true,          // 用于触发自动播放下一首
 
     /** 音乐列表信息 */
-    currentPlayList: [],  // 当前播放列表
-    songDetails: null,    // 单个歌单信息
-    currentPlayIndex: -1, // 当前歌曲在歌曲列表的位置
+    currentPlayList : [],     // 当前播放列表
+    songDetails     : null,   // 单个歌单信息
+    currentPlayIndex: -1,     // 当前歌曲在歌曲列表的位置
   },
   getters: {
-    songId: (state) => state.songId,
-    songTitle: (state) => state.songTitle,
-    songUrl: (state) => state.songUrl,
-    songPic: (state) => state.songPic,
+    songId    : (state) => state.songId,
+    songTitle : (state) => state.songTitle,
+    songUrl   : (state) => state.songUrl,
+    songPic   : (state) => state.songPic,
     singerName: (state) => state.singerName,
-    lyric: (state) => state.lyric,
+    lyric     : (state) => state.lyric,
 
-    isPlay: (state) => state.isPlay,
+    isPlay     : (state) => state.isPlay,
     playBtnIcon: (state) => state.playBtnIcon,
-    volume: (state) => state.volume,
-    duration: (state) => state.duration,
-    curTime: (state) => state.curTime,
-    changeTime: (state) => state.changeTime,
-    autoNext: (state) => state.autoNext,
+    volume     : (state) => state.volume,
+    duration   : (state) => state.duration,
+    curTime    : (state) => state.curTime,
+    changeTime : (state) => state.changeTime,
+    autoNext   : (state) => state.autoNext,
 
-    currentPlayList: (state) => state.currentPlayList,
-    songDetails: (state) => state.songDetails,
+    currentPlayList : (state) => state.currentPlayList,
+    songDetails     : (state) => state.songDetails,
     currentPlayIndex: (state) => state.currentPlayIndex,
   },
   mutations: {
@@ -97,10 +97,7 @@ export default {
     },
   },
   actions: {
-    playMusic: (
-      { commit },
-      { id, url, pic, index, songTitle, singerName, lyric, currentSongList }
-    ) => {
+    playMusic: ({ commit },{ id, url, pic, index, songTitle, singerName, lyric, currentSongList }) => {
       commit('setSongId', id)
       commit('setSongUrl', url)
       commit('setSongPic', pic)

@@ -73,9 +73,9 @@ export default function () {
       return;
     }
 
-    const result = (await HttpManager.downloadMusic(songUrl)) as ResponseBody;
+    const result  = (await HttpManager.downloadMusic(songUrl)) as ResponseBody;
     const eleLink = document.createElement("a");
-    eleLink.download = `${songName}.mp3`;
+    eleLink.download      = `${songName}.mp3`;
     eleLink.style.display = "none";
     // 字符内容转变成 blob 地址
     const blob = new Blob([result.data]);

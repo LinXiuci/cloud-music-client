@@ -2,7 +2,6 @@
   <div class="yin-header">
     <!--图标-->
     <div class="header-logo" @click="goPage()">
-      <yin-icon :icon="iconList.ERJI"></yin-icon>
       <span>{{ musicName }}</span>
     </div>
     <yin-header-nav
@@ -49,18 +48,16 @@ import {
   ref,
   getCurrentInstance,
   computed,
-  reactive,
 } from "vue";
 import { Search } from "@element-plus/icons-vue";
 import { useStore } from "vuex";
-import YinIcon from "./YinIcon.vue";
 import YinHeaderNav from "./YinHeaderNav.vue";
 import mixin from "@/mixins/mixin";
 import {
   HEADERNAVLIST,
   SIGNLIST,
   MENULIST,
-  Icon,
+  // Icon,
   MUSICNAME,
   RouterName,
   NavName,
@@ -69,25 +66,22 @@ import { HttpManager } from "@/api";
 
 export default defineComponent({
   components: {
-    YinIcon,
     YinHeaderNav,
   },
   setup() {
-    const { proxy } = getCurrentInstance();
-    const store = useStore();
+    const { proxy }                      = getCurrentInstance();
+    const store                          = useStore();
     const { changeIndex, routerManager } = mixin();
 
-    const musicName = ref(MUSICNAME);
-    const headerNavList = ref(HEADERNAVLIST); // 左侧导航栏
-    const signList = ref(SIGNLIST); // 右侧导航栏
-    const menuList = ref(MENULIST); // 用户下拉菜单项
-    const iconList = reactive({
-      ERJI: Icon.ERJI,
-    });
-    const keywords = ref("");
+    const musicName     = ref(MUSICNAME);
+    const headerNavList = ref(HEADERNAVLIST);  // 左侧导航栏
+    const signList      = ref(SIGNLIST);       // 右侧导航栏
+    const menuList      = ref(MENULIST);       // 用户下拉菜单项
+
+    const keywords      = ref("");
     const activeNavName = computed(() => store.getters.activeNavName);
-    const userPic = computed(() => store.getters.userPic);
-    const token = computed(() => store.getters.token);
+    const userPic       = computed(() => store.getters.userPic);
+    const token         = computed(() => store.getters.token);
 
     function goPage(path, name) {
       if (!path && !name) {
@@ -128,7 +122,6 @@ export default defineComponent({
       headerNavList,
       signList,
       menuList,
-      iconList,
       keywords,
       activeNavName,
       userPic,
@@ -179,6 +172,8 @@ export default defineComponent({
   display: flex;
   white-space: nowrap;
   flex-wrap: nowrap;
+  color: #FFFFFF;
+  background: #2fa4f1;
 }
 
 /* LOGO */
@@ -206,11 +201,9 @@ export default defineComponent({
   &::v-deep input {
     text-indent: 5px;
     flex-grow: 0 !important;
-    // max-width: $header-search-max-width;
     min-width: $header-search-min-width;
     border-radius: $header-search-radius;
     box-shadow: none;
-    // background-color: $color-light-grey;
     color: $color-black;
   }
 }

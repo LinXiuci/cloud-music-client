@@ -41,16 +41,16 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
-    const lrcTop = ref("80px"); // 歌词滑动
-    const lyricArr = ref([]); // 当前歌曲的歌词
-    const songId = computed(() => store.getters.songId); // 歌曲ID
-    const lyric = computed(() => store.getters.lyric); // 歌词
-    const currentPlayList = computed(() => store.getters.currentPlayList); // 存放的音乐
-    const currentPlayIndex = computed(() => store.getters.currentPlayIndex); // 当前歌曲在歌曲列表的位置
-    const curTime = computed(() => store.getters.curTime);
-    const songTitle = computed(() => store.getters.songTitle); // 歌名
-    const singerName = computed(() => store.getters.singerName); // 歌手名
-    const songPic = computed(() => store.getters.songPic); // 歌曲图片
+    const lrcTop           = ref("80px");                                     // 歌词滑动
+    const lyricArr         = ref([]);                                         // 当前歌曲的歌词
+    const songId           = computed(() => store.getters.songId);            // 歌曲ID
+    const lyric            = computed(() => store.getters.lyric);             // 歌词
+    const currentPlayList  = computed(() => store.getters.currentPlayList);   // 存放的音乐
+    const currentPlayIndex = computed(() => store.getters.currentPlayIndex);  // 当前歌曲在歌曲列表的位置
+    const curTime          = computed(() => store.getters.curTime);
+    const songTitle        = computed(() => store.getters.songTitle);         // 歌名
+    const singerName       = computed(() => store.getters.singerName);        // 歌手名
+    const songPic          = computed(() => store.getters.songPic);           // 歌曲图片
     watch(songId, () => {
       lyricArr.value = parseLyric(currentPlayList.value[currentPlayIndex.value].lyric);
     });
@@ -60,12 +60,12 @@ export default defineComponent({
         for (let i = 0; i < lyricArr.value.length; i++) {
           if (curTime.value >= lyricArr.value[i][0]) {
             for (let j = 0; j < lyricArr.value.length; j++) {
-              (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[j].style.color = "#000";
+              (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[j].style.color    = "#000";
               (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[j].style.fontSize = "14px";
             }
             if (i >= 0) {
               lrcTop.value = -i * 30 + 50 + "px";
-              (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[i].style.color = "#95d2f6";
+              (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[i].style.color    = "rgb(127, 208, 255)";
               (document.querySelectorAll(".has-lyric li") as NodeListOf<HTMLElement>)[i].style.fontSize = "18px";
             }
           }
@@ -120,11 +120,10 @@ export default defineComponent({
   font-family: $font-family;
   .song-lyric {
     position: relative;
-    min-height: 300px;
+    min-height: 700px;
     padding: 30px 0;
     overflow: auto;
     border-radius: 12px;
-    background-color: $color-light-grey;
     .has-lyric {
       position: absolute;
       transition: all 1s;
@@ -146,6 +145,12 @@ export default defineComponent({
       }
     }
   }
+  .song-lyric::-webkit-scrollbar{
+    width: 5px;
+  }
+   .song-lyric::-webkit-scrollbar-thumb{
+    background: rgb(127, 208, 255);
+   }
 }
 
 .lyric-fade-enter,

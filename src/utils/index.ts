@@ -25,9 +25,9 @@ export function formatDate(cellValue) {
 
 // 解析歌词
 export function parseLyric(text) {
-  let lines = text.split("\n");
+  let   lines   = text.split("\n");
   const pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g;
-  const result = [];
+  const result  = [];
 
   // 对于歌词格式不对的特殊处理
   if (!/\[.+\]/.test(text)) {
@@ -40,8 +40,8 @@ export function parseLyric(text) {
 
   lines[lines.length - 1].length === 0 && lines.pop();
   for (const item of lines) {
-    const time = item.match(pattern); // 存前面的时间段
-    const value = item.replace(pattern, ""); // 存歌词
+    const time  = item.match(pattern);        // 存前面的时间段
+    const value = item.replace(pattern, "");  // 存歌词
     for (const item1 of time) {
       const t = item1.slice(1, -1).split(":");
       if (value !== "") {
@@ -55,16 +55,16 @@ export function parseLyric(text) {
 
 // 解析播放时间
 export function formatSeconds(value) {
-  let theTime = parseInt(value);
+  let theTime  = parseInt(value);
   let theTime1 = 0;
   let theTime2 = 0;
   if (theTime > 60) {
-    theTime1 = parseInt((theTime / 60).toString()); // 分
-    theTime = parseInt((theTime % 60).toString()); // 秒
+    theTime1 = parseInt((theTime / 60).toString());  // 分
+    theTime  = parseInt((theTime % 60).toString());  // 秒
     // 是否超过一个小时
     if (theTime1 > 60) {
-      theTime2 = parseInt((theTime1 / 60).toString()); // 小时
-      theTime1 = 60; // 分
+      theTime2 = parseInt((theTime1 / 60).toString());  // 小时
+      theTime1 = 60;                                    // 分
     }
   }
   // 多少秒

@@ -31,7 +31,7 @@ export default defineComponent({
     YinLoginLogo,
   },
   setup() {
-    const { proxy } = getCurrentInstance();
+    const { proxy } = getCurrentInstance(); // 获取当前组件的实例、上下文来操作router和vuex等。
     const { routerManager, changeIndex } = mixin();
 
     // 登录用户名密码

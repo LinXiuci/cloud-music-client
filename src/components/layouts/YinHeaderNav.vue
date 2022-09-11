@@ -35,7 +35,7 @@ li {
   margin: $header-nav-margin;
   padding: $header-nav-padding;
   line-height: 3.3rem;
-  color: $color-grey;
+  // color: $color-grey;
   border-bottom: none;
   cursor: pointer;
 }
@@ -46,7 +46,5 @@ li.active {
   border-bottom: 5px solid $color-black;
 }
 
-.el-input__inner{
-  
-}
+
 </style>
